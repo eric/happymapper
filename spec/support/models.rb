@@ -265,6 +265,13 @@ module PITA
 end
 
 module GitHub
+  class Modified
+    include HappyMapper
+
+    element :diff, String
+    element :filename, String
+  end
+
   class Commit
     include HappyMapper
 
@@ -274,6 +281,8 @@ module GitHub
     element :message, String
     element :id, String
     element :'committed-date', Date
+
+    has_many :modified, Modified, :xpath => "./modified/modified"
   end
 end
 

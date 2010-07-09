@@ -6,13 +6,15 @@ module HappyMapper
     
     # options:
     #   :deep   =>  Boolean False to only parse element's children, True to include
-    #               grandchildren and all others down the chain (// in expath)
+    #               grandchildren and all others down the chain (// in xpath)
     #   :namespace => String Element's namespace if it's not the global or inherited
     #                  default
     #   :parser =>  Symbol Class method to use for type coercion.
     #   :raw    =>  Boolean Use raw node value (inc. tags) when parsing.
     #   :single =>  Boolean False if object should be collection, True for single object
     #   :tag    =>  String Element name if it doesn't match the specified name.
+    #   :xpath  =>  String XPath to find element. Most useful for finding
+    #                  child HappyMapper objects deep in a document.
     def initialize(name, type, o={})
       self.name = name.to_s
       self.type = type

@@ -219,6 +219,7 @@ describe HappyMapper do
     commit.id.should == "c26d4ce9807ecf57d3f9eefe19ae64e75bcaaa8b"
     commit.committed_date.should == Date.parse("2008-03-02T16:45:41-08:00")
     commit.tree.should == "28a1a1ca3e663d35ba8bf07d3f1781af71359b76"
+    commit.modified.first.filename.should == "lib/github.rb"
   end
 
   it "should parse xml with no namespace" do

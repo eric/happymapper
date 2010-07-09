@@ -90,9 +90,13 @@ module HappyMapper
       namespace = @namespace || (node.namespaces && node.namespaces.default)
       namespace = "#{DEFAULT_NS}:#{namespace}" if namespace
 
-      xpath = root ? '/' : './/'
-      xpath += "#{DEFAULT_NS}:" if namespace
-      xpath += tag_name
+      if options[:xpath]
+        xpath = options[:xpath]
+      else
+        xpath = root ? '/' : './/'
+        xpath += "#{DEFAULT_NS}:" if namespace
+        xpath += tag_name
+      end
 
       nodes = node.find(xpath, Array(namespace))
       collection = nodes.collect do |n|
